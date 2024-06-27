@@ -1,0 +1,94 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    text-align: center;
+    background-color: rgb(230, 230, 230);
+}
+
+.heading{
+    margin-top: 1em;
+    font-size: 5rem;
+    font-family: sans-serif;
+}
+
+.container{
+    width: 800px;
+    margin: 0 auto;
+    display: flex;
+    margin-top: 4em;
+    justify-content: space-between;
+}
+
+.controls{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2em 0;
+}
+
+.grid{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    box-shadow: 0 0 3px 3px grey;
+}
+
+.row{
+    height: 100%;
+    display: flex;
+}
+
+.col{
+    flex: 1;
+    transition: background-color 0.2s ease;
+}
+
+button{
+    width: 80%;
+    margin: 0 auto;
+    border: black 1px solid;
+    color: black;
+    background-color: white;
+    border-radius: 12px;
+    padding: .5em 1.5em;
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+    border: white 1px solid;
+    padding: .6em 1.6em;
+}
+
+input{
+    margin: 0 auto;
+}
+
+#color{
+    -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  width: 100px;
+  height: 100px;
+  border: none;
+  cursor: pointer;
+}
+#color::-webkit-color-swatch {
+    border-radius: 50%;
+    border: 7px solid #000000;
+  }
+#color::-moz-color-swatch {
+    border-radius: 50%;
+    border: 7px solid #000000;
+  }
+
+.active{
+    background-color: black;
+    color: white;
+    border: white 1px solid;
+    padding: .7em 1.7em;
+}
