@@ -7,7 +7,7 @@ let clear = document.querySelector('#clear');
 let shade = document.querySelector('#shade');
 let label = document.querySelector('label');
 label.innerText = `${boxNum.value} by ${boxNum.value}`;
-let mycolor = '';
+let mycolor = 'rgb(255,255,255)';
 
 
 function darkenOpacity() {
@@ -48,22 +48,23 @@ function colorArray()
         multi.classList.remove('active');
         erase.classList.remove('active');
         shade.classList.remove('active');
+        pickedColor.classList.add('activeToo');
     })
     multi.addEventListener('click', () => {
-        pickedColor.classList.remove('active');
+        pickedColor.classList.remove('activeToo');
         multi.classList.add('active');
         erase.classList.remove('active');
         shade.classList.remove('active');
     })
     erase.addEventListener('click', () => {
-        pickedColor.classList.remove('active');
+        pickedColor.classList.remove('activeToo');
         multi.classList.remove('active');
         erase.classList.add('active');
         shade.classList.remove('active');
-        mycolor = 'white';
+        mycolor = 'rgb(255,255,255)';
     })
     shade.addEventListener('click' , () => {
-        pickedColor.classList.remove('active');
+        pickedColor.classList.remove('activeToo');
         multi.classList.remove('active');
         erase.classList.remove('active');
         shade.classList.add('active');
@@ -84,6 +85,11 @@ boxNum.addEventListener('change', () => {
     label.innerText = `${boxNum.value} by ${boxNum.value}`;
     createGrid()
 })
+
+boxNum.addEventListener('input', () => {
+    label.innerText = `${boxNum.value} by ${boxNum.value}`;
+})
+
 let isMouseDown = false;
 function createGrid(){
     for(let i = 0; i < boxNum.value; i++){
@@ -130,6 +136,38 @@ function createGrid(){
                 }
                 
             })
+
+            function getTouchedElement(x, y) {
+                return document.elementFromPoint(x, y);
+              }
+
+            function handleTouchMove(event) {
+                
+                const touch = event.touches[0];
+                const touchedElement = getTouchedElement(touch.clientX, touch.clientY);
+          
+                if (touchedElement && touchedElement.classList.contains('col') && multi.classList.contains('active')) {
+                    event.preventDefault();
+                  // Trigger the event (e.g., change background color)
+                  touchedElement.style.backgroundColor = `${colorArray()}`;
+                }
+                
+                else if (touchedElement && touchedElement.classList.contains('col') && erase.classList.contains('active')) {
+                    event.preventDefault();
+                    // Trigger the event (e.g., change background color)
+                    touchedElement.style.backgroundColor = 'rgb(255,255,255)';
+                  }
+
+                else if (touchedElement && touchedElement.classList.contains('col') && pickedColor.classList.contains('activeToo')) {
+                    event.preventDefault();
+                  // Trigger the event (e.g., change background color)
+                  touchedElement.style.backgroundColor = `${mycolor}`;
+                }
+                
+              }
+
+            grid.addEventListener('touchstart', handleTouchMove)
+            grid.addEventListener('touchmove', handleTouchMove)
             colBox.addEventListener('click', () => {
                 if(multi.classList.contains('active')){
                     colBox.style.cssText = `background-color: ${colorArray()}`;
@@ -169,6 +207,3 @@ createGrid();
 
 
 
-function color(){
-
-}

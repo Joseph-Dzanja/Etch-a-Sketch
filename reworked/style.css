@@ -34,6 +34,7 @@
     flex-direction: column;
     border: 1px solid black;
     box-shadow: 0 0 3px 3px grey;
+    background-color: white;
 }
 
 .row{
@@ -91,4 +92,48 @@ input{
     color: white;
     border: white 1px solid;
     padding: .7em 1.7em;
+}
+
+@media screen and (max-width: 890px){
+    .container{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .heading{
+        font-size: 3rem;
+        
+    }
+    .container{
+        width: 600px;
+    }
+    .grid{
+        width: 550px;
+        height: 550px;
+    }
+    .controls{
+        height: 450px;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .container{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .heading{
+        font-size: 3rem;
+        
+    }
+    .container{
+        width: 400px;
+    }
+    .grid{
+        width: 350px;
+        height: 350px;
+    }
+    .controls{
+        height: 400px;
+    }
 }
