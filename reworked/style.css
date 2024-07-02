@@ -37,6 +37,10 @@
     background-color: white;
 }
 
+.grid:hover{
+    cursor: url('cursor.cur'), auto;
+}
+
 .row{
     height: 100%;
     display: flex;
@@ -62,10 +66,12 @@ button:hover{
     color: white;
     border: white 1px solid;
     padding: .6em 1.6em;
+    cursor: pointer;
 }
 
 input{
     margin: 0 auto;
+    cursor: pointer;
 }
 
 #color{
